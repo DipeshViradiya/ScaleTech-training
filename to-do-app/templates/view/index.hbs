@@ -14,7 +14,7 @@
 <div class="container mt-5">
 <div class="container center">
   <h1>Todo App</h1>
-  <a href="/products/create-form" class="btn btn-success">Create Task</a>
+  <a href="/create-task" class="btn btn-success">Create Task</a>
   <br /><br />
   <table class="table">
     <tr>
@@ -34,8 +34,8 @@
         
         <td>{{this.isactive}}</td>
         <td>
-            <a href="/products/edit-form/{{this.id}}" class="btn btn-info btn-sm">Edit</a>
-            <a href="/products/delete/{{this.id}}" class="btn btn-danger btn-sm">Delete</a>
+            <a href="/edit-task/{{this.id}}" class="btn btn-info btn-sm">Edit</a>
+            <a href="/delete-task/{{this.id}}" class="btn btn-danger btn-sm">Delete</a>
         </td>
       </tr>
     {{/each}}
