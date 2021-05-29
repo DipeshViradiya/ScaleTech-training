@@ -1,3 +1,6 @@
+const prompt = require('prompt-sync')();
+
+//Node class to implement basic structure of a particular node in tree
 class Node {
     constructor(data) {
         this.data = data;
@@ -10,7 +13,7 @@ class BinaryTree {
     constructor(){
         this.root = null;
     }
-
+    //insertData function inserts data in tree at right place
     insertData (data){
         var node = new Node(data);
         if(this.root == null) { 
@@ -21,7 +24,7 @@ class BinaryTree {
             
         } 
     }
-
+    //findPlaceAndInsert function takes root of tree and adds node at a certain place according to binary search tree manner
     findPlaceAndInsert(root, node){
         if(node.data < root.data){
             if(root.left == null){
@@ -39,7 +42,7 @@ class BinaryTree {
             }
         }
     }
-
+    //function to print tree in inorder traversal manner
     inorder(root) {
         if(root !== null) {
             this.inorder(root.left);
@@ -47,7 +50,7 @@ class BinaryTree {
             this.inorder(root.right);
         }
     }
-
+    //function to find depth of tree by entering node
     maxDepth (root) {
         if (!root) {
             return 0;
@@ -55,7 +58,7 @@ class BinaryTree {
 
         return 1 + Math.max(this.maxDepth(root.left), this.maxDepth(root.right));
     }
-
+    //function to find hierarchy in tree which sums equals to input k
     findAndPrintHierarchy(root, k) {
         if(root === null) {
             return;
@@ -69,6 +72,8 @@ class BinaryTree {
         for(let i = stack.length - 1; i >= 0 ; i--) {
             sum = sum + stack[i];
             if(sum === k) {
+                flag = true;
+                console.log("Possible Hierarchies : ");
                 for(let j = i; j< stack.length ; j++) {
                     console.log(stack[j] + " ");
                 }
@@ -80,21 +85,28 @@ class BinaryTree {
 }
 var binaryTreeObj = new BinaryTree();
 let stack = [];
+var flag = false;
 
 /*
-
 ---------- This code is to generate random integers from 0 to 99 in tree----------
+*/
 
-var inputDepth = 5;
+var inputDepth = prompt("Enter the depth of a tree you want to create : ");
 do{
     binaryTreeObj.insertData(Math.floor(Math.random() * 100));
 } while (binaryTreeObj.maxDepth(binaryTreeObj.root) <= inputDepth)
 console.log(binaryTreeObj.inorder(binaryTreeObj.root));
 
-*/
+var sum = prompt("Enter the sum you want to print a hierarchy for... : ");
+binaryTreeObj.findAndPrintHierarchy(binaryTreeObj.root, parseInt(sum));
+if(!flag){
+    console.log("No such hierarchies...");
+}
+
 
 /*
----the test code for small tree---*/
+---the test code for small tree---
+
 binaryTreeObj.insertData(4);
 binaryTreeObj.insertData(2);
 binaryTreeObj.insertData(6);
@@ -102,7 +114,10 @@ binaryTreeObj.insertData(1);
 binaryTreeObj.insertData(3);
 binaryTreeObj.insertData(5);
 binaryTreeObj.insertData(7);
+*/
 
+
+/*
 
 //binaryTreeObj.insertData(8);
 //binaryTreeObj.insertData(45);
@@ -110,8 +125,9 @@ binaryTreeObj.insertData(7);
 //console.log(Object.keys(binaryTreeObj));
 //console.log(Object.values(binaryTreeObj));
 //console.log(binaryTreeObj.maxDepth(binaryTreeObj.root));
-//console.log(binaryTreeObj.inorder(binaryTreeObj.root));
-binaryTreeObj.findAndPrintHierarchy(binaryTreeObj.root, 6);
+//console.log(binaryTreeObj.inorder(binaryTreeObj.root));*/
+
+//binaryTreeObj.findAndPrintHierarchy(binaryTreeObj.root, 4);
 
 
 /*
